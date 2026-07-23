@@ -226,17 +226,36 @@
     <h2 class="section-title"><i class="fas fa-rocket" style="color: var(--accent-purple);"></i> 精選專案</h2>
     <div class="projects-grid">
         
-        <!-- 專案卡片 1 -->
+      <!-- 專案卡片 1：物物交換平台 (已加入圖片與 Demo 連結) -->
         <div class="project-card">
             <div>
-                <div class="card-icon"><i class="fas fa-arrows-rotate"></i></div>
-                <h3>物物交換平台原型</h3>
-                <p>致力於推動資源再利用的社區 Barter 平台，包含完整的用戶流程與 Figma 介面設計。</p>
+                <!-- 專案預覽圖片 -->
+                <div style="margin-bottom: 15px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 160px; background: #1e293b;">
+                    <!-- 如果有上傳圖片，會顯示 reuse-hk.png；若未上傳會自動顯示美麗的預設圖 -->
+                    <img src="reuse-hk.png" alt="Reuse HK 物物交換平台" 
+                         style="width: 100%; height: 100%; object-fit: cover; display: block;" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x320/1e293b/8b5cf6?text=Reuse+HK+App+Prototype';">
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <div class="card-icon" style="margin-bottom: 0; font-size: 1.4rem;"><i class="fas fa-arrows-rotate"></i></div>
+                    <h3 style="margin-bottom: 0;">Reuse HK 物物交換平台</h3>
+                </div>
+
+                <p>致力於推動社區資源再利用的 Barter 平台，包含完整用戶流程、物品刊登與 Figma 互動介面原型。</p>
             </div>
-            <div class="card-tags">
-                <span class="card-tag">Figma</span>
-                <span class="card-tag">UI/UX</span>
-                <span class="card-tag">App Prototype</span>
+
+            <div style="margin-top: 15px;">
+                <div class="card-tags" style="margin-bottom: 15px;">
+                    <span class="card-tag">Figma</span>
+                    <span class="card-tag">UI/UX</span>
+                    <span class="card-tag">App Prototype</span>
+                </div>
+
+                <!-- 實體 Demo / Figma 連結按鈕 -->
+                <a href="https://www.figma.com/" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; color: #3b82f6; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s;">
+                    <i class="fab fa-figma"></i> 開啟 Figma 原型 Demo <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+                </a>
             </div>
         </div>
 
