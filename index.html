@@ -36,7 +36,7 @@
         }
 
         .container {
-            max-width: 1100px; /* 加寬至 1100px，讓 3 欄卡片橫向並排 */
+            max-width: 1200px; /* 加寬容器，確保 3 個專案有充足寬度橫向排列 */
             width: 100%;
             margin: 20px auto;
             flex: 1;
@@ -45,7 +45,7 @@
         /* Hero 個人介紹區 */
         .hero {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background: radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 70%);
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -54,14 +54,14 @@
         }
 
         .avatar {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin: 0 auto 15px;
             box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
         }
@@ -134,12 +134,13 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 3 欄式專案網格 */
+        /* 核心：打橫 3 欄式專案網格 */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 桌面版固定 3 欄並排 */
+            grid-template-columns: repeat(3, 1fr); /* 桌面版固定平分 3 欄橫向排列 */
             gap: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+            width: 100%;
         }
 
         .project-card {
@@ -151,6 +152,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-width: 0; /* 關鍵：防止縮圖滑動區撐爆卡片寬度 */
         }
 
         .project-card:hover {
@@ -165,7 +167,7 @@
         }
 
         .project-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 8px;
         }
 
@@ -190,17 +192,19 @@
             border-radius: 6px;
         }
 
-        /* 專案卡片精簡按鈕樣式 */
+        /* 專案卡片底部按鈕 */
         .card-action-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 5px;
-            padding: 6px 12px;
-            font-size: 0.8rem;
+            padding: 7px 10px;
+            font-size: 0.78rem;
             font-weight: 600;
             border-radius: 8px;
             text-decoration: none;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .btn-figma {
@@ -223,20 +227,41 @@
             background: rgba(16, 185, 129, 0.25);
         }
 
-        /* 頁尾 */
+        /* 11 張縮圖滑動軌道樣式 */
+        .thumb-gallery {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .thumb-gallery img {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 頁尾：確保 100% 位於最底端 */
         footer {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 25px 0;
+            padding: 25px 0 10px;
             margin-top: auto;
         }
 
-        /* 平板與手機版適應 */
-        @media (max-width: 900px) {
+        /* 手機版響應式：螢幕低於 768px 時自動變回單欄 */
+        @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -267,33 +292,33 @@
         </a>
     </section>
 
-    <!-- 精選專案展示區 -->
+    <!-- 精選專案展示區 (三個打橫 SHOW) -->
     <h2 class="section-title"><i class="fas fa-rocket" style="color: var(--accent-purple);"></i> 精選專案</h2>
     <div class="projects-grid">
         
-        <!-- 專案卡片 1：物物交換平台 (含 11 張圖縮圖畫廊 + 雙按鈕) -->
+        <!-- 專案卡片 1：物物交換平台 -->
         <div class="project-card">
             <div>
-                <!-- 主圖展示區 (預設顯示 flow_overview_2.png) -->
-                <div style="margin-bottom: 10px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 150px; background: #1e293b;">
+                <!-- 主圖展示區 -->
+                <div style="margin-bottom: 10px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 140px; background: #1e293b;">
                     <img id="reuseHkMain" src="flow_overview_2.png" alt="Reuse HK 主畫面" 
                          style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.3s;"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x320/1e293b/8b5cf6?text=Reuse+HK+Main+Screen';">
                 </div>
 
-                <!-- 縮圖畫廊 (11 張圖滾動選單) -->
-                <div style="display: flex; gap: 6px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 4px;">
-                    <img src="flow_overview_2.png" alt="縮圖 1" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=1';">
-                    <img src="01_onboarding_login_2.png" alt="縮圖 2" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=2';">
-                    <img src="02_phone_age_2.png" alt="縮圖 3" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/10b981?text=3';">
-                    <img src="04_city_explore_home_fixed_2.png" alt="縮圖 4" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/f59e0b?text=4';">
-                    <img src="05_item_detail_2.png" alt="縮圖 5" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ec4899?text=5';">
-                    <img src="06_listing_questionnaire_2.png" alt="縮圖 6" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=6';">
-                    <img src="07_offer_multi_select_2.png" alt="縮圖 7" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=7';">
-                    <img src="10_match_locked_fixed_2.png" alt="縮圖 8" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/10b981?text=8';">
-                    <img src="11_private_shipping_form_2.png" alt="縮圖 9" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/f59e0b?text=9';">
-                    <img src="12_shipping_eco_fixed_2.png" alt="縮圖 10" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ec4899?text=10';">
-                    <img src="13_completion_points_fixed_2.png" alt="縮圖 11" onclick="document.getElementById('reuseHkMain').src=this.src" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=11';">
+                <!-- 縮圖畫廊 (11 張圖滑動軌道) -->
+                <div class="thumb-gallery">
+                    <img src="flow_overview_2.png" alt="1" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=1';">
+                    <img src="01_onboarding_login_2.png" alt="2" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=2';">
+                    <img src="02_phone_age_2.png" alt="3" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/10b981?text=3';">
+                    <img src="04_city_explore_home_fixed_2.png" alt="4" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/f59e0b?text=4';">
+                    <img src="05_item_detail_2.png" alt="5" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ec4899?text=5';">
+                    <img src="06_listing_questionnaire_2.png" alt="6" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=6';">
+                    <img src="07_offer_multi_select_2.png" alt="7" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=7';">
+                    <img src="10_match_locked_fixed_2.png" alt="8" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/10b981?text=8';">
+                    <img src="11_private_shipping_form_2.png" alt="9" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/f59e0b?text=9';">
+                    <img src="12_shipping_eco_fixed_2.png" alt="10" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ec4899?text=10';">
+                    <img src="13_completion_points_fixed_2.png" alt="11" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=11';">
                 </div>
 
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
@@ -301,7 +326,7 @@
                     <h3 style="margin-bottom: 0;">Reuse HK 物物交換平台</h3>
                 </div>
 
-                <p>致力於推動社區資源再利用的 Barter 平台，包含完整用戶流程、物品刊登與 Figma 互動介面原型。</p>
+                <p>致力於推動社區資源再利用的 Barter 平台，包含完整用戶流程與 Figma 互動介面原型。</p>
             </div>
 
             <div>
@@ -312,8 +337,8 @@
                     <span class="card-tag" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">Pitch Deck</span>
                 </div>
 
-                <!-- 精簡膠囊按鈕區 (Figma Demo + PDF Pitch Deck) -->
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <!-- 雙按鈕 -->
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
                     <a href="https://www.figma.com/make/1k7EDc9NTEuQyK0KFwx0DX/Prototype-App-Creation?code-node-id=0-6&p=f&t=wTLWMYTwukOEJzsJ-0&fullscreen=1" target="_blank" rel="noopener noreferrer" class="card-action-btn btn-figma">
                         <i class="fab fa-figma"></i> Figma Demo
                     </a>
@@ -361,7 +386,7 @@
     </div>
 </div>
 
-<!-- 頁尾 (固定最底端) -->
+<!-- 頁尾：位於最底部 -->
 <footer>
     <p>© 2026 Suen Hin Ming. Powered by GitHub Pages.</p>
 </footer>
