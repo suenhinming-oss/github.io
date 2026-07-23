@@ -36,7 +36,7 @@
         }
 
         .container {
-            max-width: 1200px; /* 加寬容器，確保 3 個專案有充足寬度橫向排列 */
+            max-width: 1200px;
             width: 100%;
             margin: 20px auto;
             flex: 1;
@@ -134,10 +134,10 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 核心：打橫 3 欄式專案網格 */
+        /* 打橫 3 欄式專案網格 */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 桌面版固定平分 3 欄橫向排列 */
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-bottom: 40px;
             width: 100%;
@@ -152,7 +152,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-width: 0; /* 關鍵：防止縮圖滑動區撐爆卡片寬度 */
+            min-width: 0;
         }
 
         .project-card:hover {
@@ -227,7 +227,18 @@
             background: rgba(16, 185, 129, 0.25);
         }
 
-        /* 11 張縮圖滑動軌道樣式 */
+        .btn-game {
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-game:hover {
+            background: rgba(168, 85, 247, 0.25);
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+
+        /* 縮圖滑動軌道樣式 */
         .thumb-gallery {
             display: flex;
             gap: 6px;
@@ -246,9 +257,14 @@
             object-fit: cover;
             cursor: pointer;
             border: 1px solid rgba(255,255,255,0.2);
+            transition: border-color 0.2s;
         }
 
-        /* 頁尾：確保 100% 位於最底端 */
+        .thumb-gallery img:hover {
+            border-color: var(--accent-purple);
+        }
+
+        /* 頁尾 */
         footer {
             width: 100%;
             max-width: 1200px;
@@ -260,7 +276,6 @@
             margin-top: auto;
         }
 
-        /* 手機版響應式：螢幕低於 768px 時自動變回單欄 */
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -283,8 +298,8 @@
             <span class="skill-tag"><i class="fab fa-figma"></i> Figma UI/UX</span>
             <span class="skill-tag"><i class="fas fa-brain"></i> AI API Integration</span>
             <span class="skill-tag"><i class="fab fa-html5"></i> HTML/CSS</span>
-            <span class="skill-tag"><i class="fas fa-robot"></i> Claude AI/CSS</span>
-            <span class="skill-tag"><i class="fas fa-sparkles"></i> Gemini AI/CSS</span>
+            <span class="skill-tag"><i class="fas fa-robot"></i> Claude AI</span>
+            <span class="skill-tag"><i class="fas fa-magic"></i> Fable 5 / Vibe Coding</span>
         </div>
 
         <a href="https://github.com/suenhinming-oss" class="btn" target="_blank">
@@ -299,14 +314,12 @@
         <!-- 專案卡片 1：物物交換平台 -->
         <div class="project-card">
             <div>
-                <!-- 主圖展示區 -->
                 <div style="margin-bottom: 10px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 140px; background: #1e293b;">
                     <img id="reuseHkMain" src="flow_overview_2.png" alt="Reuse HK 主畫面" 
-                         style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.3s;"
+                         style="width: 100%; height: 100%; object-fit: cover; display: block;"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x320/1e293b/8b5cf6?text=Reuse+HK+Main+Screen';">
                 </div>
 
-                <!-- 縮圖畫廊 (11 張圖滑動軌道) -->
                 <div class="thumb-gallery">
                     <img src="flow_overview_2.png" alt="1" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=1';">
                     <img src="01_onboarding_login_2.png" alt="2" onclick="document.getElementById('reuseHkMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=2';">
@@ -337,7 +350,6 @@
                     <span class="card-tag" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">Pitch Deck</span>
                 </div>
 
-                <!-- 雙按鈕 -->
                 <div style="display: flex; gap: 6px; flex-wrap: wrap;">
                     <a href="https://www.figma.com/make/1k7EDc9NTEuQyK0KFwx0DX/Prototype-App-Creation?code-node-id=0-6&p=f&t=wTLWMYTwukOEJzsJ-0&fullscreen=1" target="_blank" rel="noopener noreferrer" class="card-action-btn btn-figma">
                         <i class="fab fa-figma"></i> Figma Demo
@@ -365,20 +377,46 @@
             </div>
         </div>
 
-        <!-- 專案卡片 3：3D 互動遊樂場 -->
+        <!-- 專案卡片 3：3D 互動遊樂場（含 4 圖動態點擊放大縮圖畫廊） -->
         <div class="project-card">
             <div>
-                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>3D 互動遊樂場體驗</h3>
-                <p>基於 Unity 打造的 Sandbox 開放世界遊樂場，包含設施物理互動與角色操作控制。</p>
+                <!-- 主圖展示區 -->
+                <div style="margin-bottom: 10px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 140px; background: #1e293b;">
+                    <img id="playgroundMain" src="playground_preview3.png" alt="我的Q版海洋樂園" 
+                         style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x320/1e293b/a855f7?text=My+Q+Ocean+Park+3D';">
+                </div>
+
+                <!-- 縮圖軌道 (4 張圖點擊切換) -->
+                <div class="thumb-gallery">
+                    <!-- 💡 請確保 src="" 裡面的檔名對應你上傳到 GitHub 的 4 張圖片名稱 -->
+                    <img src="playground_preview.png" alt="遊戲截圖 1" onclick="document.getElementById('playgroundMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/a855f7?text=1';">
+                    <img src="playground_preview1.png" alt="遊戲截圖 2" onclick="document.getElementById('playgroundMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=2';">
+                    <img src="playground_preview2.png" alt="遊戲截圖 3" onclick="document.getElementById('playgroundMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/10b981?text=3';">
+                    <img src="playground_preview3.png" alt="遊戲截圖 4" onclick="document.getElementById('playgroundMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/f59e0b?text=4';">
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <div class="card-icon" style="margin-bottom: 0; font-size: 1.3rem;"><i class="fas fa-gamepad"></i></div>
+                    <h3 style="margin-bottom: 0;">3D 互動遊樂場體驗</h3>
+                </div>
+
+                <p>「我的Q版海洋樂園」：結合 Claude、Fable 5 與 Vibe Coding 打造的 Web 3D 互動空間，支援角色圖片上傳與設施體驗。</p>
             </div>
+
             <div>
                 <div class="card-tags">
-                    <span class="card-tag">Unity</span>
-                    <span class="card-tag">C#</span>
                     <span class="card-tag">Claude</span>
                     <span class="card-tag">Fable 5</span>
-                    <span class="card-tag">3D Sandbox</span>
+                    <span class="card-tag">Vibe Coding</span>
+                    <span class="card-tag">3D Web Game</span>
+                </div>
+
+                <!-- 遊戲試玩按鈕區 -->
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <a href="playground_7.html" target="_blank" rel="noopener noreferrer" class="card-action-btn btn-game">
+                        <i class="fas fa-play"></i> 試玩 Demo (v0.7)
+                    </a>
                 </div>
             </div>
         </div>
@@ -386,7 +424,7 @@
     </div>
 </div>
 
-<!-- 頁尾：位於最底部 -->
+<!-- 頁尾：最底端 -->
 <footer>
     <p>© 2026 Suen Hin Ming. Powered by GitHub Pages.</p>
 </footer>
