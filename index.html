@@ -362,18 +362,37 @@
             </div>
         </div>
 
-        <!-- 專案卡片 2：AI 語音助理 -->
+        <!-- 專案卡片 2：AI 語音助理 (已加入圖片展示與 2 圖畫廊 + VS Code 標籤) -->
         <div class="project-card">
             <div>
-                <div class="card-icon"><i class="fas fa-robot"></i></div>
-                <h3>AI 語音助理開發</h3>
+                <!-- 主圖展示區 -->
+                <div style="margin-bottom: 10px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); height: 140px; background: #1e293b;">
+                    <img id="voiceAiMain" src="voice_ai_1.png" alt="AI 語音助理" 
+                         style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x320/1e293b/3b82f6?text=AI+Voice+Assistant';">
+                </div>
+
+                <!-- 縮圖軌道 (2 張圖點擊切換) -->
+                <div class="thumb-gallery">
+                    <!-- 💡 請將 src="" 裡的檔名改成你上傳到 GitHub 的兩張圖片名稱 -->
+                    <img src="voice_ai_1.png" alt="截圖 1" onclick="document.getElementById('voiceAiMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/3b82f6?text=1';">
+                    <img src="voice_ai_2.png" alt="截圖 2" onclick="document.getElementById('voiceAiMain').src=this.src" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/8b5cf6?text=2';">
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <div class="card-icon" style="margin-bottom: 0; font-size: 1.3rem;"><i class="fas fa-robot"></i></div>
+                    <h3 style="margin-bottom: 0;">AI 語音助理開發</h3>
+                </div>
+
                 <p>結合 LLM API 與 Python 的智能語音助手，支援即時語音對話與自動化流程。</p>
             </div>
+
             <div>
                 <div class="card-tags">
                     <span class="card-tag">Python</span>
                     <span class="card-tag">Gemini API</span>
                     <span class="card-tag">Voice AI</span>
+                    <span class="card-tag">VS Code</span>
                 </div>
             </div>
         </div>
